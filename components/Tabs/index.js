@@ -8,7 +8,9 @@
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
 
-const tabs= document.querySelector('.tabs');
+//const tabs= document.querySelector('.tabs');
+
+const topicsDiv = document.querySelector('.topics');
 
 const topicsArray = ['JAVASCRIPT', 'BOOTSTRAP', 'TECHNOLOGY', 'JQUERY', 'NODE.JS'];
 
@@ -16,6 +18,7 @@ topicsArray.forEach( topic => {
     axios.get('https://lambda-times-backend.herokuapp.com/topics')
     .then(response => {
         console.log(response);
+        topic.textContent = response.data.topics
     })}
 )
 
@@ -42,7 +45,7 @@ topicsArray.forEach( topic => {
 //     return span
 // }
 
-
+//EVERYTHING BELOW GOT ME WHERE I PUSHED LAST TIME, EXCEPT I TOOK OUT A QUERYSELECTOR
 // axios.get('https://lambda-times-backend.herokuapp.com/topics')
 //     .then(response => {
 //         console.log(response);
