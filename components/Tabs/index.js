@@ -8,65 +8,35 @@
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
 
-//const tabs= document.querySelector('.tabs');
 
-const topicsDiv = document.querySelector('.topics');
 
-const topicsArray = ['JAVASCRIPT', 'BOOTSTRAP', 'TECHNOLOGY', 'JQUERY', 'NODE.JS'];
+const topics = document.querySelector('.topics');
 
-topicsArray.forEach( topic => {
-    axios.get('https://lambda-times-backend.herokuapp.com/topics')
+axios.get('https://lambda-times-backend.herokuapp.com/topics')
     .then(response => {
         console.log(response);
-        topic.textContent = response.data.topics
-    })}
-)
+        const newTopics = response.data.topics;
 
-// topicsArray.forEach( topic => {
-//     axios.get('https://lambda-times-backend.herokuapp.com/topics')
-//     .then(response => {
-//         console.log(response);
-//         const newTopics = response.data;
-//         const newTabs = topicCreator(newTopics);
-//         tabs.appendChild(newTabs);
-//     })}
-// )
-
-// function topicCreator (object) {
-//     const topicDiv = document.createElement('div');
-//     const span = document.createElement('span');
-
-//     topicDiv.classList.add('topics');
-//     span.classList.add('title');
-
-//     span.textContent = object.data.topics;
-
-//     topicDiv.appendChild(span);
-//     return span
-// }
-
-//EVERYTHING BELOW GOT ME WHERE I PUSHED LAST TIME, EXCEPT I TOOK OUT A QUERYSELECTOR
-// axios.get('https://lambda-times-backend.herokuapp.com/topics')
-//     .then(response => {
-//         console.log(response);
-//         const newTopics = response.data.topics;
-//         const newTabs = tabs(newTopics);
-//         topics.appendChild(newTabs);
-//     })
-//     .catch( error => {
-//         console.log('this is wrong, Joey', error);
-//     });
+        newTopics.forEach(topic => {
+            console.log(topic);
+            const newTabs = tabs(topic);
+            topics.appendChild(newTabs);
+        })
+    })
+    .catch( error => {
+        console.log('this is wrong', error);
+    });
 
 
-// function tabs (topic) {
-//     const tab = document.createElement('div');
-//     const links = document.createElement('a');
+function tabs (topic) {
+    const tab = document.createElement('div');
+    const links = document.createElement('a');
 
-//     tab.classList.add('tab');
+    tab.classList.add('tab');
 
-//     links.textContent = topic;
+    links.textContent = topic;
 
-//     tab.appendChild(links);
+    tab.appendChild(links);
 
-//     return tab
-// }
+    return tab
+}
