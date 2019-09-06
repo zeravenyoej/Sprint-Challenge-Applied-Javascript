@@ -8,30 +8,62 @@
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
 
-const topics = document.querySelector('.topics');
+const tabs= document.querySelector('.tabs');
 
+const topicsArray = ['JAVASCRIPT', 'BOOTSTRAP', 'TECHNOLOGY', 'JQUERY', 'NODE.JS'];
 
-axios.get('https://lambda-times-backend.herokuapp.com/topics')
+topicsArray.forEach( topic => {
+    axios.get('https://lambda-times-backend.herokuapp.com/topics')
     .then(response => {
         console.log(response);
-        const newTopics = response.data.topics;
-        const newTabs = tabs(newTopics);
-        topics.appendChild(newTabs);
-    })
-    .catch( error => {
-        console.log('this is wrong, Joey', error);
-    });
+    })}
+)
+
+// topicsArray.forEach( topic => {
+//     axios.get('https://lambda-times-backend.herokuapp.com/topics')
+//     .then(response => {
+//         console.log(response);
+//         const newTopics = response.data;
+//         const newTabs = topicCreator(newTopics);
+//         tabs.appendChild(newTabs);
+//     })}
+// )
+
+// function topicCreator (object) {
+//     const topicDiv = document.createElement('div');
+//     const span = document.createElement('span');
+
+//     topicDiv.classList.add('topics');
+//     span.classList.add('title');
+
+//     span.textContent = object.data.topics;
+
+//     topicDiv.appendChild(span);
+//     return span
+// }
 
 
-function tabs (topic) {
-    const tab = document.createElement('div');
-    const links = document.createElement('a');
+// axios.get('https://lambda-times-backend.herokuapp.com/topics')
+//     .then(response => {
+//         console.log(response);
+//         const newTopics = response.data.topics;
+//         const newTabs = tabs(newTopics);
+//         topics.appendChild(newTabs);
+//     })
+//     .catch( error => {
+//         console.log('this is wrong, Joey', error);
+//     });
 
-    tab.classList.add('tab');
 
-    links.textContent = topic;
+// function tabs (topic) {
+//     const tab = document.createElement('div');
+//     const links = document.createElement('a');
 
-    tab.appendChild(links);
+//     tab.classList.add('tab');
 
-    return tab
-}
+//     links.textContent = topic;
+
+//     tab.appendChild(links);
+
+//     return tab
+// }
