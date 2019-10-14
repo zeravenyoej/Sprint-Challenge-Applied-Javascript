@@ -20,9 +20,9 @@ function Tab (ob){
 axios
     .get('https://lambda-times-backend.herokuapp.com/topics')
     .then(res=>{
-        console.log(res);
+        // console.log(res);
         newRes=res.data.topics;
-        console.log(newRes);
+        // console.log(newRes);
         newRes.forEach(barItem=>{
             tabsContainer.appendChild(Tab(barItem));
         });
